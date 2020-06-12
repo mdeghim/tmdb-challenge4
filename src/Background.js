@@ -17,7 +17,11 @@ export default class Background extends Lightning.Component{
 
     _init() {
         let bg;
-
+        this.application.on("playback", () => {
+          this.tag("Background").patch({
+              alpha:0, scale:1.2
+          });
+        });
         this.application.on("updateItem", ({item})=> {
             if(item.background === bg){
                 return;
